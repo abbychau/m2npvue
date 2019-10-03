@@ -3,14 +3,29 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
-
+    user: {
+      account: '',
+      password: '',
+      isLogin: false
+    },
+    users: {}
   },
   mutations: {
-
-  },
-  actions: {
-
+    setUserData (state, { userData }) {
+      state.user.account = userData.account
+      state.user.password = userData.password
+      state.user.isLogin = true
+    },
+    setUsers (state, usersArrary) {
+      // console.log(usersArrary)
+      state.users = usersArrary.reduce((map, obj) => {
+        map[obj.id] = obj
+        return map
+      }, {})
+    }
   }
 })
+
+export default store
