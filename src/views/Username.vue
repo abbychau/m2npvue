@@ -4,7 +4,7 @@
       {{ $store.state.users[this.$props.userId].description }}
     </template>
     <span slot="title">{{ $store.state.users[this.$props.userId].username }}</span>
-    <span>{{ $store.state.users[this.$props.userId].username }}</span>
+    <span :style="{color:'#777'}">~{{ $store.state.users[this.$props.userId].username }}</span>
   </a-popover>
 </template>
 
