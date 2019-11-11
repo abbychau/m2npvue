@@ -5,9 +5,10 @@
       :key="`tl_item_${index}`"
       :style="{ wordBreak:'break-all', backgroundColor: index%2?'#CCC':'white', padding:'1em'}"
     >
-      {{ item.json.created_at | timeDifference }}
-
+      
+<!--{{ JSON.stringify(item.json) }}-->
       <span v-auto-link>{{ item.json.post }}</span> <Username :style="{marginLeft:'0.5em'}" :userId="item.user_id" />
+      <span style="color:#666"> {{ item.json.created_at | timeDifference }}</span>
     </div>
   </div>
 </template>
@@ -49,12 +50,12 @@ export default {
     }
   },
   mounted () {
-    axios.request('https://m2np.com/api/users/subscribed').then(res => {
+    axios.request('https://api.m2np.com/users/subscribed').then(res => {
       console.log(res.data)
       this.$store.commit('setUsers', res.data)
     })
 
-    axios.request('https://m2np.com/api/timeline/1/0').then(res => {
+    axios.request('https://api.m2np.com/timeline/1/0').then(res => {
       this.items = res.data
     })
   }

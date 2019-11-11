@@ -13,18 +13,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'landing',
+      component: Home,
+      meta: { requiresAuth: true }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { requiresAuth: true }
+      
     },
     {
-      path: '/afterlogin',
-      name: 'afterlogin',
-      component: AfterLogin
+      path: '/timeline',
+      name: 'timeline',
+      component: AfterLogin,
+      meta: { requiresAuth: true }
     },
     {
       path: '/about',
