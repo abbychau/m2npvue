@@ -6,15 +6,15 @@ import router from './router'
 import store from './store'
 import FBSignInButton from 'vue-facebook-signin-button'
 import 'ant-design-vue/dist/antd.css'
-import VueCookie from 'vue-cookie'
+import VueCookies from 'vue-cookies'
 import './directives'
 
 
-Vue.use(VueCookie)
+Vue.use(VueCookies)
 Vue.config.productionTip = false
 Vue.use(Antd)
-
 Vue.use(FBSignInButton)
+VueCookies.config('7d')
 
 var Auth = {
   loggedIn: false,
@@ -23,14 +23,21 @@ var Auth = {
 }
 
 router.beforeEach((to, from, next) => {
-  next()
-  if (to.matched.some(record => record.meta.requiresAuth) && !Auth.loggedIn) {
-    next({ path: '/login', query: { redirect: to.fullPath } })
-  } else if (to.matched.some(record => record.meta.loggedInThenRedirect) && Auth.loggedIn) {
-    next({ path: record.meta.loggedInThenRedirect })
-  } else {
-    next()
+
+  let isLogin = Vue.$cookies.isKey('token');
+  if (!isLogin) {
+      if (to.path !== '/login') {
+          return next({path: '/login'});
+      }else {
+          next();
+      }
+  }else {
+      if (to.path === '/login') {
+          return next({path: '/'});
+      }
+      next();
   }
+
 })
 
 new Vue({

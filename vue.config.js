@@ -1,6 +1,6 @@
 module.exports = {
   devServer: {
-    host: 'dev.m2np.com',
+    host: '127.0.0.1',
     port: 8080,
   }
 }
