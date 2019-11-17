@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     login () {
+      this.$cookies.set('token','asdfsadf')
       this.$store.commit({
         type: 'setUserData',
         userData: this.user
@@ -45,6 +46,7 @@ export default {
       this.$router.push('/')
     },
     onSignInSuccess (response) {
+      console.log(response)
       // eslint-disable-next-line no-undef
       FB.api('/me', dude => {
         console.log(`Good to see you, ${dude.name}.`)

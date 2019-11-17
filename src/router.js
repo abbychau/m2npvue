@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import AfterLogin from './views/AfterLogin.vue'
 import FbCallback from './views/FbCallback.vue'
+import Settings from './views/Settings.vue'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/login/facebook/callback',
       name: 'callback',
       component: FbCallback
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     }
   ]
 })

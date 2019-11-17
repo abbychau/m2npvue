@@ -19,5 +19,7 @@ module.exports = {
         "vue"
     ],
     "rules": {
+        "semi": 0,
+        "no-console" : 0
     }
 };

@@ -16,15 +16,9 @@ Vue.use(Antd)
 Vue.use(FBSignInButton)
 VueCookies.config('7d')
 
-var Auth = {
-  loggedIn: false,
-  login: function () { this.loggedIn = true },
-  logout: function () { this.loggedIn = false }
-}
-
 router.beforeEach((to, from, next) => {
 
-  let isLogin = Vue.$cookies.isKey('token');
+  let isLogin = Vue.cookies.isKey('token');
   if (!isLogin) {
       if (to.path !== '/login') {
           return next({path: '/login'});
