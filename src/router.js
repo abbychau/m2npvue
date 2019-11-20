@@ -5,7 +5,8 @@ import Login from './views/Login.vue'
 import AfterLogin from './views/AfterLogin.vue'
 import FbCallback from './views/FbCallback.vue'
 import Settings from './views/Settings.vue'
-
+import MyDay from './views/MyDay.vue'
+import About from './views/About.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -13,31 +14,30 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/myday',
+      name: 'myday',
+      component: MyDay
+    },
+    {
       path: '/',
       name: 'landing',
-      component: Home,
-      meta: { requiresAuth: true }
+      component: Home
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
-      meta: { requiresAuth: true }
-      
+      component: Login
+
     },
     {
       path: '/timeline',
       name: 'timeline',
-      component: AfterLogin,
-      meta: { requiresAuth: true }
+      component: AfterLogin
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: About
     },
     {
       path: '/login/facebook/callback',

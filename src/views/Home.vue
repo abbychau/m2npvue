@@ -5,9 +5,10 @@
       :key="`tl_item_${index}`"
       :style="{ wordBreak:'break-all', backgroundColor: index%2?'#CCC':'white', padding:'1em'}"
     >
-      
+
 <!--{{ JSON.stringify(item.json) }}-->
-      <span v-auto-link>{{ item.json.post }}</span> <Username :style="{marginLeft:'0.5em'}" :userId="item.user_id" />
+      <span v-auto-link>{{ item.json.post }}</span>
+      <Username :style="{marginLeft:'0.5em'}" :userId="item.user_id" />
       <span style="color:#666"> {{ item.json.created_at | timeDifference }}</span>
     </div>
   </div>
@@ -15,7 +16,7 @@
 
 <script>
 import axios from 'axios'
-import Username from './Username'
+import Username from '../components/Username'
 
 export default {
   name: 'home',

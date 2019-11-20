@@ -5,33 +5,44 @@
       <nav class='sidemenu'>
         <ul>
           <li>
+          <router-link to="/myday">
+            <i class="fas fa-basketball-ball"></i>
+            <span class="nav-text">My Day</span>
+          </router-link>
+          </li>
+          <li>
         <router-link to="/">
-          <a-icon type="user" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">Home</span>
         </router-link>
-        </li><li>
+        </li>
+<li>
         <router-link to="/about">
-          <a-icon type="video-camera" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">About</span>
         </router-link>
-        </li><li>
+        </li>
+<li>
         <router-link to="/login">
-          <a-icon type="upload" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">Login</span>
         </router-link>
-        </li><li>
+        </li>
+<li>
         <router-link to="/afterlogin">
-          <a-icon type="bar-chart" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">After Login</span>
         </router-link>
-        </li><li>
+        </li>
+<li>
         <router-link to="/login/facebook/callback">
-          <a-icon type="bar-chart" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">Callback</span>
         </router-link>
-        </li><li>
+        </li>
+<li>
         <router-link to="/settings">
-          <a-icon type="bar-gear" />
+          <i class="fas fa-basketball-ball"></i>
           <span class="nav-text">Settings</span>
         </router-link>
         </li></ul>
@@ -48,8 +59,12 @@
 </template>
 
 <style>
+@font-face {
+  font-family: "Zpix";
+  src: url("~@/assets/Zpix.ttf");
+}
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Zpix;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
