@@ -16,16 +16,16 @@ router.beforeEach((to, from, next) => {
 
   let isLogin = Vue.cookies.isKey('token');
   if (!isLogin) {
-      if (to.path !== '/login') {
-          return next({path: '/login'});
-      }else {
-          next();
-      }
-  }else {
-      if (to.path === '/login') {
-          return next({path: '/'});
-      }
+    if (to.path !== '/login') {
+      return next({ path: '/login' });
+    } else {
       next();
+    }
+  } else {
+    if (to.path === '/login') {
+      return next({ path: '/' });
+    }
+    next();
   }
 
 })

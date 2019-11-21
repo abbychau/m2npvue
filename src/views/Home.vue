@@ -1,64 +1,71 @@
 <template>
   <div class="home">
+    <EntryInputbox />
     <div
-      v-for="(item,index) in items"
+      v-for="(item, index) in items"
       :key="`tl_item_${index}`"
-      :style="{ wordBreak:'break-all', backgroundColor: index%2?'#CCC':'white', padding:'1em'}"
+      :style="{
+        wordBreak: 'break-all',
+        backgroundColor: index % 2 ? '#CCC' : 'white',
+        padding: '1em'
+      }"
     >
-
-<!--{{ JSON.stringify(item.json) }}-->
+      <!--{{ JSON.stringify(item.json) }}-->
       <span v-auto-link>{{ item.json.post }}</span>
-      <Username :style="{marginLeft:'0.5em'}" :userId="item.user_id" />
-      <span style="color:#666"> {{ item.json.created_at | timeDifference }}</span>
+      <Username :style="{ marginLeft: '0.5em' }" :userId="item.user_id" />
+      <span style="color:#666">
+        {{ item.json.created_at | timeDifference }}</span
+      >
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import Username from '../components/Username'
+import axios from "axios";
+import Username from "../components/Username";
+import EntryInputbox from "../components/EntryInputbox";
 
 export default {
-  name: 'home',
-  components: { Username },
-  data: function () {
-    return { items: [] }
+  name: "home",
+  components: { Username, EntryInputbox },
+  data: function() {
+    return { items: [] };
   },
   filters: {
-    timeDifference: (previous) => {
-      var current = Date.now()
-      var msPerMinute = 60 * 1000
-      var msPerHour = msPerMinute * 60
-      var msPerDay = msPerHour * 24
-      var msPerMonth = msPerDay * 30
-      var msPerYear = msPerDay * 365
+    timeDifference: previous => {
+      var current = Date.now();
+      var msPerMinute = 60 * 1000;
+      var msPerHour = msPerMinute * 60;
+      var msPerDay = msPerHour * 24;
+      var msPerMonth = msPerDay * 30;
+      var msPerYear = msPerDay * 365;
 
-      var elapsed = current - previous * 1000
+      var elapsed = current - previous * 1000;
 
       if (elapsed < msPerMinute) {
-        return Math.round(elapsed / 1000) + 's'
+        return Math.round(elapsed / 1000) + "s";
       } else if (elapsed < msPerHour) {
-        return Math.round(elapsed / msPerMinute) + 'm'
+        return Math.round(elapsed / msPerMinute) + "m";
       } else if (elapsed < msPerDay) {
-        return Math.round(elapsed / msPerHour) + 'h'
+        return Math.round(elapsed / msPerHour) + "h";
       } else if (elapsed < msPerMonth) {
-        return Math.round(elapsed / msPerDay) + 'd'
+        return Math.round(elapsed / msPerDay) + "d";
       } else if (elapsed < msPerYear) {
-        return Math.round(elapsed / msPerMonth) + 'm'
+        return Math.round(elapsed / msPerMonth) + "m";
       } else {
-        return Math.round(elapsed / msPerYear) + 'y'
+        return Math.round(elapsed / msPerYear) + "y";
       }
     }
   },
-  mounted () {
-    axios.request('https://api.m2np.com/users/subscribed').then(res => {
-      console.log(res.data)
-      this.$store.commit('setUsers', res.data)
-    })
+  mounted() {
+    axios.request("https://api.m2np.com/users/subscribed").then(res => {
+      console.log(res.data);
+      this.$store.commit("setUsers", res.data);
+    });
 
-    axios.request('https://api.m2np.com/timeline/1/0').then(res => {
-      this.items = res.data
-    })
+    axios.request("https://api.m2np.com/timeline/1/0").then(res => {
+      this.items = res.data;
+    });
   }
-}
+};
 </script>

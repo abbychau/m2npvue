@@ -13,12 +13,12 @@ const store = new Vuex.Store({
     users: {}
   },
   mutations: {
-    setUserData (state, { userData }) {
+    setUserData(state, { userData }) {
       state.user.account = userData.account
       state.user.password = userData.password
       state.user.isLogin = true
     },
-    setUsers (state, usersArrary) {
+    setUsers(state, usersArrary) {
       // console.log(usersArrary)
       state.users = usersArrary.reduce((map, obj) => {
         map[obj.id] = obj

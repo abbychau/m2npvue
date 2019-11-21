@@ -3,10 +3,20 @@
     <h2>Login</h2>
     <div>
       <div>
-        <input type="text" id="account" placeholder="Account" v-model="user.account" />
+        <input
+          type="text"
+          id="account"
+          placeholder="Account"
+          v-model="user.account"
+        />
       </div>
       <div>
-        <input type="password" id="password" placeholder="Password" v-model="user.password" />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          v-model="user.password"
+        />
       </div>
       <div>
         <button @click="login">Login</button>
@@ -16,7 +26,8 @@
           :params="fbSignInParams"
           @success="onSignInSuccess"
           @error="onSignInError"
-        >Sign in with Facebook</fb-signin-button>
+          >Sign in with Facebook</fb-signin-button
+        >
       </div>
     </div>
   </div>
@@ -24,43 +35,43 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       user: {
-        account: '',
-        password: ''
+        account: "",
+        password: ""
       },
       fbSignInParams: {
-        scope: 'email,user_likes',
+        scope: "email,user_likes",
         return_scopes: true
       }
-    }
+    };
   },
   methods: {
-    login () {
-      this.$cookies.set('token','asdfsadf')
+    login() {
+      this.$cookies.set("token", "asdfsadf");
       this.$store.commit({
-        type: 'setUserData',
+        type: "setUserData",
         userData: this.user
-      })
-      this.$router.push('/')
+      });
+      this.$router.push("/");
     },
-    onSignInSuccess (response) {
-      console.log(response)
+    onSignInSuccess(response) {
+      console.log(response);
       // eslint-disable-next-line no-undef
-      FB.api('/me', dude => {
-        console.log(`Good to see you, ${dude.name}.`)
-        console.log(JSON.stringify(dude))
-      })
+      FB.api("/me", dude => {
+        console.log(`Good to see you, ${dude.name}.`);
+        console.log(JSON.stringify(dude));
+      });
     },
-    onSignInError (error) {
-      console.log('OH NOES', error)
+    onSignInError(error) {
+      console.log("OH NOES", error);
     }
   },
   components: {
     // VFacebookLogin
   }
-}
+};
 </script>
 <style>
 .fb-signin-button {

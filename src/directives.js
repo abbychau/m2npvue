@@ -34,7 +34,7 @@ var autolinker = new Autolinker({
   }
 })
 Vue.directive('auto-link', {
-  inserted (el) {
+  inserted(el) {
     el.innerHTML = autolinker.link(el.innerHTML).trim().replace(/\n/g, '<br/>')// .slice(0,-7)
   }
 })
