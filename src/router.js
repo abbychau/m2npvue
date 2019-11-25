@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
-import AfterLogin from './views/AfterLogin.vue'
+import Messenger from './views/Messenger.vue'
 import FbCallback from './views/FbCallback.vue'
 import Settings from './views/Settings.vue'
 import MyDay from './views/MyDay.vue'
@@ -30,9 +30,9 @@ export default new Router({
 
     },
     {
-      path: '/timeline',
-      name: 'timeline',
-      component: AfterLogin
+      path: '/messenger',
+      name: 'messenger',
+      component: Messenger
     },
     {
       path: '/about',

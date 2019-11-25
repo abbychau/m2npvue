@@ -29,9 +29,9 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/afterlogin">
+            <router-link to="/messenger">
               <i class="fas fa-basketball-ball"></i>
-              <span class="nav-text">After Login</span>
+              <span class="nav-text">Messenger</span>
             </router-link>
           </li>
           <li>
@@ -97,6 +97,38 @@ body {
 }
 .sidemenu a {
   color: white;
+}
+h1 {
+  font-size: 3em;
+  margin-top: 1.5em;
+}
+h2 {
+  font-size: 2em;
+  margin-top: 1em;
+}
+h3 {
+  font-size: 1.5em;
+  margin-top: 0.75em;
+}
+p {
+  margin-top: 0.5em;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  border: 2px dashed black !important;
+}
+textarea,
+.file,
+input[type="submit"],
+.border,
+button {
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 0.2em;
+  margin-right: 3px;
 }
 </style>
 <script>

@@ -28,15 +28,7 @@
 input[type="file"] {
   display: none;
 }
-textarea,
-.file,
-input[type="submit"],
-.border {
-  border: 2px solid black;
-  border-radius: 3px;
-  padding: 0.2em;
-  margin-right: 3px;
-}
+
 textarea {
   width: 100%;
   height: 50px;

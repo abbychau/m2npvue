@@ -12,6 +12,20 @@
     >
       <!--{{ JSON.stringify(item.json) }}-->
       <span v-auto-link>{{ item.json.post }}</span>
+      <div v-if="item.json.attachments">
+        <div
+          v-for="(medium, i2) in item.json.attachments"
+          v-bind:key="`tl_item_${index}_${i2}`"
+        >
+          <img
+            v-if="medium.media"
+            :src="
+              `https://cdn0.m2np.com/file/kiyomi/45b514b70182fa447d4d302b819e5bcd/${medium.media[0].uri}`
+            "
+            style="width:100px"
+          />
+        </div>
+      </div>
       <Username :style="{ marginLeft: '0.5em' }" :userId="item.user_id" />
       <span style="color:#666">
         {{ item.json.created_at | timeDifference }}</span

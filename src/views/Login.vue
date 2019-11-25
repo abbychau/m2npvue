@@ -22,12 +22,30 @@
         <button @click="login">Login</button>
       </div>
       <div>
-        <fb-signin-button
+        <button
           :params="fbSignInParams"
-          @success="onSignInSuccess"
-          @error="onSignInError"
-          >Sign in with Facebook</fb-signin-button
+          @success="onFbSignInSuccess"
+          @error="onFbSignInError"
+          style="background:blue; color:white"
         >
+          Sign in with Facebook
+        </button>
+        <button
+          :params="ghSignInParams"
+          @success="onGhSignInSuccess"
+          @error="onGhSignInError"
+          style="background:black; color:white"
+        >
+          Sign in with Github
+        </button>
+        <button
+          :params="ggSignInParams"
+          @success="onGgSignInSuccess"
+          @error="onGgSignInError"
+          style="background:red; color:white"
+        >
+          Sign in with Google
+        </button>
       </div>
     </div>
   </div>
@@ -44,6 +62,14 @@ export default {
       fbSignInParams: {
         scope: "email,user_likes",
         return_scopes: true
+      },
+      ggSignInParams: {
+        scope: "email,user_likes",
+        return_scopes: true
+      },
+      ghSignInParams: {
+        scope: "email,user_likes",
+        return_scopes: true
       }
     };
   },
@@ -56,7 +82,7 @@ export default {
       });
       this.$router.push("/");
     },
-    onSignInSuccess(response) {
+    onFbSignInSuccess(response) {
       console.log(response);
       // eslint-disable-next-line no-undef
       FB.api("/me", dude => {
@@ -64,7 +90,31 @@ export default {
         console.log(JSON.stringify(dude));
       });
     },
-    onSignInError(error) {
+    onFbSignInError(error) {
+      console.log("OH NOES", error);
+    },
+
+    onGhSignInSuccess(response) {
+      console.log(response);
+      // eslint-disable-next-line no-undef
+      FB.api("/me", dude => {
+        console.log(`Good to see you, ${dude.name}.`);
+        console.log(JSON.stringify(dude));
+      });
+    },
+    onGhSignInError(error) {
+      console.log("OH NOES", error);
+    },
+
+    onGgSignInSuccess(response) {
+      console.log(response);
+      // eslint-disable-next-line no-undef
+      FB.api("/me", dude => {
+        console.log(`Good to see you, ${dude.name}.`);
+        console.log(JSON.stringify(dude));
+      });
+    },
+    onGgSignInError(error) {
       console.log("OH NOES", error);
     }
   },
@@ -73,7 +123,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .fb-signin-button {
   /* This is where you control how the button looks. Be creative! */
   display: inline-block;
