@@ -9,15 +9,8 @@
       </div>
     </div>
     <div>
-      <label class="file"
-        ><input
-          type="file"
-          ref="file"
-          multiple
-          @change="previewFiles"
-        />Pics</label
-      >
-      <input type="submit" value="Send" />
+      <label class="file"><input type="file" ref="file" multiple />Pics</label>
+      <button @click="submit">Send</button>
     </div>
   </div>
 </template>
@@ -72,7 +65,7 @@ export default {
         reader.readAsDataURL(this.images[i]);
       }
     },
-    submitFiles() {
+    submit() {
       let formData = new FormData();
 
       for (var i = 0; i < this.$refs.file.files.length; i++) {

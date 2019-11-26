@@ -37,6 +37,9 @@
         {{ item.json.created_at | timeDifference }}</span
       >
     </div>
+    <mugen-scroll :handler="fetchData" :should-handle="!loading">
+      loading...
+    </mugen-scroll>
   </div>
 </template>
 <style scoped>
@@ -48,12 +51,13 @@
 import axios from "axios";
 import Username from "../../components/Username";
 import EntryInputbox from "../../components/EntryInputbox";
+import MugenScroll from "vue-mugen-scroll";
 
 export default {
   name: "timeline",
-  components: { Username, EntryInputbox },
+  components: { Username, EntryInputbox, MugenScroll },
   data: function() {
-    return { items: [] };
+    return { items: [], loading: false, lastid: 0 };
   },
   filters: {
     timeDifference: previous => {
@@ -81,15 +85,27 @@ export default {
       }
     }
   },
+  methods: {
+    fetchData() {
+      this.loading = true;
+      console.log("https://api.m2np.com/timeline/1/" + this.lastid);
+      axios
+        .request("https://api.m2np.com/timeline/1/" + this.lastid)
+        .then(res => {
+          console.log(res.data[res.data.length - 1]);
+          this.lastid = res.data[res.data.length - 1].id;
+          this.items = [...this.items, ...res.data];
+          this.loading = false;
+        });
+    }
+  },
   mounted() {
     axios.request("https://api.m2np.com/users/subscribed").then(res => {
       console.log(res.data);
       this.$store.commit("setUsers", res.data);
     });
 
-    axios.request("https://api.m2np.com/timeline/1/0").then(res => {
-      this.items = res.data;
-    });
+    this.fetchData();
   }
 };
 </script>
