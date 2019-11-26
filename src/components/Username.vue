@@ -27,7 +27,6 @@ export default {
   components: {
     popper: Popper
   },
-  name: "Username",
   props: ["userId"]
 };
 </script>

@@ -69,13 +69,9 @@
 }
 * {
   font-family: Zpix;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0;
   padding: 0;
-}
-body {
-  font-family: Zpix;
-  font-size: 13px;
 }
 .sidemenu {
   overflow: auto;
@@ -118,7 +114,7 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
-  border: 2px dashed black !important;
+  border: 2px double black !important;
 }
 textarea,
 .file,

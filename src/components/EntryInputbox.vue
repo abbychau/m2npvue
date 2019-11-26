@@ -32,8 +32,6 @@ input[type="file"] {
 textarea {
   width: 100%;
   height: 50px;
-  border: 2px solid black;
-  border-radius: 3px;
 }
 
 .popper {

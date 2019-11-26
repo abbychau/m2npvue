@@ -46,8 +46,8 @@
 </style>
 <script>
 import axios from "axios";
-import Username from "@/components/Username";
-import EntryInputbox from "@/components/EntryInputbox";
+import Username from "../../components/Username";
+import EntryInputbox from "../../components/EntryInputbox";
 
 export default {
   name: "timeline",

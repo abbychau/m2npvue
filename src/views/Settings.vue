@@ -1,5 +1,8 @@
 <template>
-  <button @click="logout">Logout</button>
+  <div>
+    <button @click="logout">Logout</button>
+    Facebook Archive Import: <input type="file" />
+  </div>
 </template>
 <script>
 export default {
