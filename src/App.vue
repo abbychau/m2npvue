@@ -13,7 +13,7 @@
           <li>
             <router-link to="/">
               <i class="fas fa-basketball-ball"></i>
-              <span class="nav-text">Home</span>
+              <span class="nav-text">Timeline</span>
             </router-link>
           </li>
           <li>

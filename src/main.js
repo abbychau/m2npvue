@@ -4,32 +4,22 @@ import router from './router'
 import store from './store'
 import VueCookies from 'vue-cookies'
 import './directives'
+import Lightbox from 'vue-easy-lightbox'
 
-
+Vue.use(Lightbox)
 Vue.use(VueCookies)
+Vue.mixin({
+  methods: {
+    trimToDots(str, len) {
+      return str.length > len ? str.substring(0, len) + '...' : str;
+    }
+  }
+})
 Vue.config.productionTip = false
 VueCookies.config('7d')
-
-router.beforeEach((to, from, next) => {
-
-  let isLogin = Vue.cookies.isKey('token');
-  if (!isLogin) {
-    if (to.path !== '/login') {
-      return next({ path: '/login' });
-    } else {
-      next();
-    }
-  } else {
-    if (to.path === '/login') {
-      return next({ path: '/' });
-    }
-    next();
-  }
-
-})
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')

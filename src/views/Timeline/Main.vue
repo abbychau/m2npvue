@@ -12,10 +12,16 @@
     >
       <!--{{ JSON.stringify(item.json) }}-->
       <span v-auto-link>{{ item.json.post }}</span>
+      <div v-if="item.json.external_link">
+        <a :href="item.json.external_link">{{
+          trimToDots(item.json.external_link, 30)
+        }}</a>
+      </div>
       <div v-if="item.json.attachments">
-        <div
+        <span
           v-for="(medium, i2) in item.json.attachments"
           v-bind:key="`tl_item_${index}_${i2}`"
+          class="img_container"
         >
           <img
             v-if="medium.media"
@@ -24,7 +30,7 @@
             "
             style="width:100px"
           />
-        </div>
+        </span>
       </div>
       <Username :style="{ marginLeft: '0.5em' }" :userId="item.user_id" />
       <span style="color:#666">
@@ -33,14 +39,18 @@
     </div>
   </div>
 </template>
-
+<style scoped>
+.img_container {
+  margin-right: 5px;
+}
+</style>
 <script>
 import axios from "axios";
-import Username from "../components/Username";
-import EntryInputbox from "../components/EntryInputbox";
+import Username from "@/components/Username";
+import EntryInputbox from "@/components/EntryInputbox";
 
 export default {
-  name: "home",
+  name: "timeline",
   components: { Username, EntryInputbox },
   data: function() {
     return { items: [] };
