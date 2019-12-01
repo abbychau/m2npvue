@@ -63,12 +63,16 @@
 </template>
 
 <style>
-@font-face {
+/* @font-face {
   font-family: "Zpix";
+  src: url("assets/Zpix.ttf");
+} */
+@font-face {
+  font-family: 'mplus-1p-regular';
   src: url("assets/Zpix.ttf");
 }
 * {
-  font-family: Zpix;
+  font-family: 'mplus-1p-regular';
   font-size: 14px;
   margin: 0;
   padding: 0;

@@ -27,6 +27,7 @@
           @success="onFbSignInSuccess"
           @error="onFbSignInError"
           style="background:blue; color:white"
+          @click="goFbLoginLink"
         >
           Sign in with Facebook
         </button>
@@ -52,6 +53,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -81,6 +83,12 @@ export default {
         userData: this.user
       });
       this.$router.push("/");
+    },
+    goFbLoginLink(){
+      axios.get("https://api.m2np.com/oauth/fb_login_url").then(res => {
+        //console.log(res);
+        window.location.href = res.data.url;
+      });
     },
     onFbSignInSuccess(response) {
       console.log(response);

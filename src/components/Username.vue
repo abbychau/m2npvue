@@ -7,15 +7,16 @@
     }"
   >
     <div class="popper" style="text-align:left">
+      
       {{ $store.state.users[this.$props.userId].username }}
+
       <hr />
       <div slot="content" v-auto-link>
         {{ $store.state.users[this.$props.userId].description }}
       </div>
     </div>
 
-    <span :style="{ color: '#777' }" slot="reference"
-      >~{{ $store.state.users[this.$props.userId].username }}</span
+    <span :style="{ color: '#777' }" slot="reference">~{{ $store.state.users[this.$props.userId].username }}</span
     >
   </popper>
 </template>
